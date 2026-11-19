@@ -4,6 +4,8 @@
 
 [English](README.md) · [文档](docs/) · [项目主页](https://jinnn.xyz/mine-loco/)
 
+![CI](https://github.com/luongthimydieu/mine-loco-perception/actions/workflows/ci.yml/badge.svg)
+
 ---
 
 ## 这是什么
@@ -16,7 +18,8 @@
 2. **一次如实报告的失败**：原实现中“标定集与评测集同源”，修正后原 **+3.89 pp** 增益不成立（8 次对照 0/8）；
 3. **一次规模扩大后的反转 + 消融**：5000 张 / 640 px / 80 轮下，物理引导模型在粉尘工况
    **+10.15 / +10.93 pp**（V=20 m），而全局灰度对齐的噪声增广、仅光度增广均无增益——
-   增益来自**随深度变化的散射结构**本身。
+   增益来自**随深度变化的散射结构**本身。逐类看，小目标/细长目标受益最大
+   （Bottle +27.3、Cup +12.9 AP@0.5），Bicycle 是唯一小幅下降的类别。
 
 > **边界**：粉尘为合成退化；ExDark 类别与井下轨道障碍物不一致；扩训为单次运行。
 > 本项目验证的是方法有效性与评测协议，不是井下实检精度。
@@ -49,7 +52,9 @@
 - `M_phys` 640 px 单张推理约 **9.2 ms（109 FPS）**，TTA 约 **20.8 ms（48 FPS）**（RTX 5060 Laptop）。
 
 完整表格、小规模负结果与逐类行为见 [docs/results.md](docs/results.md)；
-方法见 [docs/method.md](docs/method.md)。
+方法见 [docs/method.md](docs/method.md)；完整技术报告见
+[docs/technical-report.md](docs/technical-report.md)，模型卡/数据卡见
+[docs/model_card.md](docs/model_card.md)、[docs/data_card.md](docs/data_card.md)。
 
 ---
 

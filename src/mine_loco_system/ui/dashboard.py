@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """总览仪表盘：系统状态、KPI、报警中心。"""
 import pyqtgraph as pg
-from PySide6.QtCore import Qt, QTimer
+from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import (QHBoxLayout, QVBoxLayout, QLabel, QFrame,
                                QComboBox, QTableWidget, QTableWidgetItem,
-                               QHeaderView, QAbstractItemView, QSizePolicy)
+                               QHeaderView, QAbstractItemView)
 
 from . import theme
 from .widgets import Card, KpiCard, StatusDot, make_plot
@@ -173,13 +173,11 @@ class Dashboard(QFrame):
         if data:
             self.c_vis.setData(data["t"], data["vision"])
             self.c_est.setData(data["t"], data["est"])
-        s = self.ctx.state
         self.pos_lbl.setText(
             f"里程：{fm.odometer():.0f} m ｜ "
             f"偏移：{fm.last_offset()*1000:+.0f} mm")
 
     def on_alarm(self, rec):
-        row = self.alarm_table.rowCount()
         self.alarm_table.insertRow(0)
         vals = [rec["time"], rec["level_name"], rec["source"], rec["message"]]
         colors = {"info": theme.FG_DIM, "warn": theme.WARN,

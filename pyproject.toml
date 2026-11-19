@@ -38,6 +38,7 @@ full = [
 ]
 docs = ["python-docx>=1.1", "python-pptx>=0.6"]
 hf = ["huggingface_hub>=0.23"]
+dev = ["pytest>=8", "ruff>=0.6"]
 
 [project.scripts]
 mine-loco = "mine_loco_system.main:main"
@@ -48,3 +49,14 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F"]
+# E402: environment variables must be set before importing torch/ultralytics
+# E731: small lambdas in experiment code
+# E501: long Chinese docstrings / data tables
+ignore = ["E402", "E731", "E501"]

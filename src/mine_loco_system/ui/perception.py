@@ -1,21 +1,19 @@
 # -*- coding: utf-8 -*-
 """视觉感知模块：物理退化 → 检测，演示域差异与能见度参数化。"""
 import os
-import random
 
 import numpy as np
 import pyqtgraph as pg
 from PIL import Image
-from PySide6.QtCore import Qt, QTimer, QSize
+from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import QImage, QPixmap, QPainter, QPen, QColor, QFont
 from PySide6.QtWidgets import (QVBoxLayout, QHBoxLayout, QLabel, QSlider,
                                QCheckBox, QPushButton, QComboBox,
-                               QDoubleSpinBox, QFileDialog, QSizePolicy,
-                               QFrame)
+                               QDoubleSpinBox, QFileDialog, QFrame)
 
 from . import theme
 from .widgets import Card, make_plot, export_csv
-from ..core.physics import (degrade_pil_image, degrade_array, depth_map,
+from ..core.physics import (degrade_array, depth_map,
                             contrast_retention, beta_from_visibility,
                             mean_transmission, degrade_uniform_noise,
                             photometric_jitter)
@@ -364,7 +362,6 @@ class PerceptionPage(QFrame):
         return pm.scaled(self.img_labels[1].size(), Qt.KeepAspectRatio,
                          Qt.SmoothTransformation)
 
-        self._keep += [left, right, imgs, bl, hb, dl, dl2, hl, hl2, bottom, c_data, c_deg, c_det]
 
     def _plot_retention(self):
         import numpy as _np

@@ -29,7 +29,6 @@ import argparse
 import csv
 import json
 import os
-import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
 

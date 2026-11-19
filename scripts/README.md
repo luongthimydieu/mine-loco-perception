@@ -10,6 +10,8 @@ Run from the repository root after `pip install -e .`. All scripts resolve paths
 |---|---|
 | `download_exdark.py` | Download ExDark (CC BY 4.0) to `data/exdark` |
 | `check_repro_requirements.py` | PASS/FAIL checklist for data, weights, GPU, network |
+| `download_weights.py` | Download `yolov8n.pt` into `weights/` |
+| `make_800_subset.py` | Build the 800-image ExDark subset from the full download |
 
 ## Detection experiments
 
@@ -20,6 +22,8 @@ Run from the repository root after `pip install -e .`. All scripts resolve paths
 | `eval_extension.py` | V=30/15 curve, TTA, model soup | `outputs/results/extension_eval.json`, `outputs/figures/` |
 | `leak_diagnostic.py` | Half-leaky vs independent evaluation | console + temporary `outputs/repro/_leak_diag` |
 | `benchmark_inference.py` | Batch-1 latency / FPS | `outputs/results/benchmark_inference.json` |
+| `per_class_analysis.py` | Per-class AP for four models × three sets | `outputs/results/per_class.json`, `fig11` |
+| `threshold_sweep.py` | Confidence/F1 operating point | `outputs/results/threshold_sweep.json`, `fig12` |
 
 ## Simulation experiments
 
@@ -38,6 +42,9 @@ Run from the repository root after `pip install -e .`. All scripts resolve paths
 | `make_fig_real_degrade.py` | Regenerate the degradation comparison figure |
 | `smoke_test.py` | 1-epoch, 40-image pipeline smoke test (GPU) |
 | `run_scaleup.bat` | Windows launcher for the scale-up run |
+| `run_all.py` | One-click pipeline (tests → simulation → figures → site) |
+| `verify_workspace.py` | Repository integrity check (code/reference/site; optional data/weights) |
+| `check_site_links.py` | Verify every local link/asset in `site/index.html` |
 
 ## Typical sequence
 

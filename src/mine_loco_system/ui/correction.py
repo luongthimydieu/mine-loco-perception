@@ -9,7 +9,7 @@ from PySide6.QtWidgets import (QVBoxLayout, QHBoxLayout, QLabel, QSlider,
 
 from . import theme
 from .widgets import Card, make_plot, export_csv, KpiCard
-from ..core.fusion import FusionSession, run_e2_full, DT
+from ..core.fusion import FusionSession, DT
 
 
 class CorrectionPage(QFrame):
@@ -144,7 +144,7 @@ class CorrectionPage(QFrame):
             use_track_prior=self.prior_chk.isChecked(),
             use_fusion=True,
             use_gate=self.gate_chk.isChecked(),
-            kind=self.kind_box.currentText().split("（")[0])
+            kind=kind)
         self.log = []
         self.odom = 0.0
         for c in (self.c_truth, self.c_vis, self.c_est):

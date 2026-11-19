@@ -52,6 +52,28 @@ Cross-domain drop: M_clean −39.7 pp, M_phys −10.4 pp from clean to V=20 m.
 - The 800-image models are 15–20 pp lower and show no consistent `M_phys` vs `M_clean` difference:
   **training scale is a precondition for the gain**.
 
+### Per-class behavior at V=20 m
+
+AP@0.5 (%), M_clean → M_phys:
+
+| Class | M_clean | M_phys | Δ |
+|---|---:|---:|---:|
+| Bottle | 6.59 | 33.85 | +27.26 |
+| Dog | 32.44 | 56.93 | +24.49 |
+| Cat | 23.77 | 40.92 | +17.15 |
+| Motorbike | 47.64 | 64.42 | +16.78 |
+| People | 16.94 | 32.87 | +15.93 |
+| Cup | 35.71 | 48.61 | +12.90 |
+| Car | 23.73 | 28.15 | +4.42 |
+| Chair | 38.64 | 42.76 | +4.12 |
+| Table | 27.72 | 29.35 | +1.63 |
+| Boat | 0.00 | 0.16 | +0.16 |
+| Bus | 0.00 | 0.15 | +0.15 |
+| Bicycle | 11.88 | 8.75 | −3.13 |
+
+Small/thin objects (Bottle, Cup) and animals/people gain the most; Bicycle is the only class with a
+small drop. Figure: `assets/figures/per_class_v20.png`.
+
 ## 4. Deployment-side
 
 | Model / inference | Clean | V=20 m | V=10 m |
@@ -74,6 +96,21 @@ Latency (batch=1, RTX 5060 Laptop, 640 px, including pre/post-processing):
 | M_clean / 640 | 8.55 ms | 9.31 ms | 116.8 |
 | M_phys / 640 | 9.19 ms | 10.20 ms | 109.1 |
 | M_phys / 640 + TTA | 20.75 ms | 22.67 ms | 48.5 |
+
+### Confidence-threshold operating point
+
+mAP is threshold-free; for deployment, sweep the confidence threshold and choose the F1 maximum.
+`scripts/threshold_sweep.py` writes `outputs/results/threshold_sweep.json/.csv` and
+`assets/figures/threshold_f1.png`.
+
+| Model | Clean | V=20 m | V=10 m |
+|---|---|---|---|
+| M_clean | F1 61.98 @ 0.40 | F1 28.39 @ 0.10 | F1 21.89 @ 0.15 |
+| M_phys | F1 45.68 @ 0.25 | **F1 36.49 @ 0.25** | **F1 30.92 @ 0.25** |
+
+`M_phys` has a stable operating point at 0.25 across all three domains; `M_clean` needs a lower
+threshold in dust (0.10–0.15) to recover recall. This is a practical reason to prefer the
+physics-guided model in deployment beyond mAP.
 
 ## 5. Simulation subsystems
 

@@ -9,7 +9,6 @@ r"""复现可行性诊断：逐项检查重跑真实检测实验所需的全部�
 import importlib
 import io
 import os
-import shutil
 import socket
 import sys
 
@@ -105,7 +104,7 @@ else:
     print('    (b) 若已有原训练的 best.pt / last.pt，可跳过训练直接重评（--skip-build 不适用，需单独评测脚本）')
 
 speed = '未知'
-print(f'\n  仿真实验（E2/E3/E4）不依赖上述任何项 —— 只需 numpy，可独立重跑。')
+print('\n  仿真实验（E2/E3/E4）不依赖上述任何项 —— 只需 numpy，可独立重跑。')
 print('=' * 78)
 
 # 退出码：0=全部满足，1=有缺口（便于脚本化判断）

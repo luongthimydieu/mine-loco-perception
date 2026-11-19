@@ -18,7 +18,6 @@ import json
 import os
 import random
 import shutil
-import sys
 import time
 
 import numpy as np

@@ -4,14 +4,13 @@ import csv
 import os
 
 import pyqtgraph as pg
-from PySide6.QtCore import Qt, QTimer
+from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import (QVBoxLayout, QHBoxLayout, QLabel, QPushButton,
                                QFileDialog, QTableWidget, QTableWidgetItem,
-                               QHeaderView, QAbstractItemView, QSlider,
-                               QFrame)
+                               QHeaderView, QAbstractItemView, QFrame)
 
 from . import theme
-from .widgets import Card, make_plot
+from .widgets import make_plot
 from ..paths import ASSETS_DIR
 
 
@@ -124,9 +123,6 @@ class ReplayPage(QFrame):
                                                   name="真值")
                 self.c_truth.setData(xs, truth)
             elif self._is_lidar and n > 1:
-                d = [float(r[self._cols["估计距离m"]])
-                     for r in self.rows[:n]
-                     if r[self._cols["估计距离m"]] not in ("", None)]
                 verdicts = [r[self._cols["判决"]] for r in self.rows[:n]]
                 self.c1.setData(xs, [0] * n)
                 self.c2.setData(xs, [1 if v == "hit" else

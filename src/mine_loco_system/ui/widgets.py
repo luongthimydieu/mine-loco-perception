@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 """公共控件：卡片、状态灯、KPI、曲线页。"""
 import csv
-import os
 
 import pyqtgraph as pg
-from PySide6.QtCore import Qt
-from PySide6.QtWidgets import (QFrame, QLabel, QVBoxLayout, QHBoxLayout,
-                               QFileDialog, QMessageBox)
+from PySide6.QtWidgets import (QFrame, QLabel, QVBoxLayout, QFileDialog, QMessageBox)
 
 from . import theme
 

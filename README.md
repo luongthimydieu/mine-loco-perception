@@ -4,6 +4,7 @@
 
 [中文说明](README.zh-CN.md) · [Docs](docs/) · [Project page](https://jinnn.xyz/mine-loco/) · [Results](docs/results.md)
 
+![CI](https://github.com/luongthimydieu/mine-loco-perception/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.13-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.13-ee4c2c)
 ![Ultralytics](https://img.shields.io/badge/Ultralytics-YOLOv8-0b23a9)
@@ -40,7 +41,8 @@ The repository is the code behind the Challenge Cup project
 3. **Scale-up reversal + physical specificity.** At 5000 images / 640 px / 80 epochs, `M_phys` beats
    `M_clean` by **+10.15 / +10.93 pp** at V=20 m and **+8.89 / +10.82 pp** at V=10 m (best / last).
    Two controls — global-gray-aligned noise (`M_noise`) and photometric-only (`M_hsv`) — gain nothing.
-   The depth structure is the active ingredient.
+   The depth structure is the active ingredient. Per-class, the largest gains are small/thin objects
+   (Bottle +27.3, Cup +12.9 AP@0.5) and animals/people; Bicycle is the only class with a small drop.
 4. **Deployment-side options.** TTA lifts `M_phys` to **34.17 mAP@0.5** at V=20 m (+1.93 pp); a
    weight-average “model soup” halves the clean-domain cost (−19.2 → −10.8 pp) while keeping +7.0 pp
    of dust gain. `M_phys` 640 px runs at **~9.2 ms / 109 FPS** on an RTX 5060 Laptop.
@@ -75,8 +77,9 @@ Deployment comparison (`mAP@0.5`):
 | soup + TTA | 54.29 | 30.51 | 24.16 |
 
 The full tables, per-class behavior, and the small-scale (800 images) negative result are in
-[docs/results.md](docs/results.md). The evaluation protocol is documented in
-[docs/method.md](docs/method.md).
+[docs/results.md](docs/results.md). The evaluation protocol is in [docs/method.md](docs/method.md);
+the full write-up is [docs/technical-report.md](docs/technical-report.md). Model and data cards are
+in [docs/model_card.md](docs/model_card.md) and [docs/data_card.md](docs/data_card.md).
 
 ---
 
@@ -87,13 +90,16 @@ mine-loco-perception/
 ├─ src/mine_loco_system/     # PySide6 demo package (core physics, fusion, LiDAR, health, UI)
 ├─ scripts/                  # training, evaluation, reproduction, benchmark
 ├─ tests/                    # 18 pytest checks (physics, fusion, LiDAR, health)
-├─ docs/                     # method, results, reproduction, deployment, FAQ
+├─ docs/                     # method, results, technical report, model/data cards, deployment
 ├─ assets/                   # figures and small reference JSONs
 ├─ site/                     # static project page (deploy to jinnn.xyz)
 ├─ data/                     # datasets (not committed; see data/README.md)
 ├─ weights/                  # checkpoints (not committed; see weights/README.md)
 └─ outputs/                  # generated cases, runs, results, figures (git-ignored)
 ```
+
+See [CHANGELOG.md](CHANGELOG.md) for the release history and [docs/roadmap.md](docs/roadmap.md) for
+the next experiments.
 
 ---
 

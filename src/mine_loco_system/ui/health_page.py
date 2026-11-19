@@ -85,10 +85,10 @@ class HealthPage(QFrame):
                   "采样率 12 kHz ｜ 带通 2~6 kHz",
                   "本底判据：包络谱中位数 + 3×1.4826×MAD",
                   "实验结论：SNR 低至 −9 dB 仍可靠检出"):
-            l = QLabel("• " + t, info)
-            l.setObjectName("Dim")
-            l.setWordWrap(True)
-            il.addWidget(l)
+            lbl = QLabel("• " + t, info)
+            lbl.setObjectName("Dim")
+            lbl.setWordWrap(True)
+            il.addWidget(lbl)
         il.addStretch(1)
         info.body().addLayout(il)
         info.setFixedWidth(300)

@@ -8,7 +8,7 @@ from PySide6.QtWidgets import (QVBoxLayout, QHBoxLayout, QLabel, QSlider,
                                QFrame)
 
 from . import theme
-from .widgets import Card, make_plot, export_csv, KpiCard
+from .widgets import Card, export_csv, KpiCard
 from ..core import lidar as L
 from ..core.lidar import LidarSession, reliable_range
 

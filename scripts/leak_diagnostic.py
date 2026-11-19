@@ -73,7 +73,7 @@ print(f'\n半泄漏 − 纯独立 = {delta:+.2f} 个百分点', flush=True)
 print('解读：把一半评测图换成"选点见过的退化域"，mAP 抬高约 '
       f'{delta:.2f} 个百分点；原实现是**全部**评测图都与选点同域。', flush=True)
 
-out = os.path.join(ROOT, '泄漏诊断结果.json')
+out = os.path.join(REPRO_DIR, 'leak_diagnostic.json')
 json.dump({'说明': '同一个 M_clean/best.pt，在两个不同评测集上评测；差异只来自评测集构成',
            '结果': res, '半泄漏减纯独立(百分点)': round(delta, 2),
            '备注': '半泄漏集 = 前一半图用标定种子(选点见过的域)、后一半用独立种子'},

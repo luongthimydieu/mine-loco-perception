@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
 """主窗口：侧边导航 + 页面容器 + 全局状态/报警总线。"""
 import os
-import sys
 import time
 
 import numpy as np
 
 from PySide6.QtCore import Qt, QTimer
-from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import (QMainWindow, QWidget, QHBoxLayout, QVBoxLayout,
                                QLabel, QPushButton, QButtonGroup, QStackedWidget,
-                               QStatusBar, QMessageBox, QFrame, QApplication)
+                               QStatusBar, QFrame, QApplication)
 
-from . import theme
 from .dashboard import Dashboard
 from .perception import PerceptionPage
 from .correction import CorrectionPage
@@ -210,8 +207,6 @@ class MainWindow(QMainWindow):
         path = path or self.record_path
         if not path:
             return False
-        import cv2
-        import numpy as np
         self._rec_fps = fps
         self._rec_path = path
         self._rec_frames = []

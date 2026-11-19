@@ -131,7 +131,7 @@ class LidarSession:
         }
 
     def metrics(self):
-        tp, fp, fn, tn = self.tp, self.fp, self.fn, self.tn
+        tp, fp, fn, _tn = self.tp, self.fp, self.fn, self.tn
         n = max(self.frames, 1)
         return {
             "检出率_%": round(tp / max(tp + fn, 1) * 100, 2),

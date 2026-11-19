@@ -173,7 +173,6 @@ def run_e2(n=300, trials=30, seed=11):
                 p += v * DT
                 pure_imu[i] = p
             pure_imu = pure_imu - pure_imu[0] + 3.0
-            fused = kalman(truth, z_v_hold, z_a, beta, False, lost=lost_mask)
             fused_med = kalman(truth, z_v_med, z_a, beta, False, lost=lost_mask)
             fused_prior = kalman(truth, z_v_med, z_a, beta, True, lost=lost_mask)
             errs = {

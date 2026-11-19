@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """E2 抗差融合：约束版本应优于纯视觉零阶保持。"""
-import numpy as np
-import pytest
 
 from mine_loco_system.core.fusion import FusionSession
 
