@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the software record below."
+title: "Mine-Loco Perception: Physics-Guided Domain Adaptation for Underground Mine Locomotive Perception and Maintenance"
+version: 1.0.0
+date-released: 2026-11-19
+license: MIT
+type: software
+authors:
+  - family-names: Li
+    given-names: Kerui
+  - family-names: Wang
+    given-names: Zhiwen
+  - family-names: Yang
+    given-names: Moran
+  - family-names: Jin
+    given-names: Zikuan
+  - family-names: Qi
+    given-names: Gaoyang
+  - family-names: Xia
+    given-names: Yuhan
+  - family-names: Liu
+    given-names: Yixuan
+repository-code: "https://github.com/<your-org>/mine-loco-perception"
+keywords:
+  - domain adaptation
+  - atmospheric scattering
+  - object detection
+  - underground mining
+  - YOLOv8
+  - ExDark

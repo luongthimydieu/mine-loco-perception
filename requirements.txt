@@ -1,0 +1,23 @@
+# Reproduced environment (2026-11-19, Windows 11, Python 3.13.9, CUDA 13.0)
+# torch/torchvision are CUDA 13.0 builds. Replace the index URL for CPU/other CUDA.
+--extra-index-url https://download.pytorch.org/whl/cu130
+
+numpy==2.3.5
+pandas==2.3.3
+matplotlib==3.10.6
+opencv-python==5.0.0.93
+Pillow==12.0.0
+PyYAML==6.0.3
+
+torch==2.13.0+cu130
+torchvision==0.28.0+cu130
+ultralytics==8.4.171
+
+PySide6==6.9.2
+pyqtgraph==0.14.0
+
+python-docx==1.2.0
+python-pptx==1.0.2
+huggingface_hub==1.30.0
+
+pytest==8.4.2

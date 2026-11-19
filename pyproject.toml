@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mine-loco-perception"
+version = "1.0.0"
+description = "Physics-guided domain adaptation for underground mine locomotive perception and maintenance"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Li Kerui" },
+  { name = "Wang Zhiwen" },
+  { name = "Yang Moran" },
+  { name = "Jin Zikuan" },
+  { name = "Qi Gaoyang" },
+  { name = "Xia Yuhan" },
+  { name = "Liu Yixuan" },
+]
+keywords = ["domain adaptation", "atmospheric scattering", "object detection", "mining", "YOLOv8"]
+dependencies = [
+  "numpy>=1.26",
+  "Pillow>=10",
+  "PyYAML>=6",
+]
+
+[project.optional-dependencies]
+full = [
+  "torch>=2.2",
+  "torchvision>=0.17",
+  "ultralytics>=8.3",
+  "PySide6>=6.7",
+  "pyqtgraph>=0.13",
+  "matplotlib>=3.8",
+  "pandas>=2.0",
+  "pytest>=8",
+]
+docs = ["python-docx>=1.1", "python-pptx>=0.6"]
+hf = ["huggingface_hub>=0.23"]
+
+[project.scripts]
+mine-loco = "mine_loco_system.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

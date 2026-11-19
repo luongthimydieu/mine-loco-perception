@@ -1,0 +1,250 @@
+{
+  "实验": "扩大训练规模重跑 + 传统增广消融（研究报告 6.3 待办 4/6 的落实）",
+  "协议": {
+    "训练规模": 5000,
+    "输入尺寸": 640,
+    "轮数": 80,
+    "标定集": "valid 前 50%（368 张，种子 70001）",
+    "评测集": "valid 后 50%（368 张，种子 91001/91002/91003）",
+    "说明": "四个模型唯一变量为训练集离线退化方式；M_noise 的均匀透射率与 M_phys 全图均值对齐；YOLO 内置增广（HSV/翻转/马赛克）对所有模型一致开启。"
+  },
+  "交叉评测": {
+    "M_clean": {
+      "best": {
+        "clean_eval": {
+          "mAP@0.5": 61.81,
+          "mAP@0.5:0.95": 34.45,
+          "Precision": 61.56,
+          "Recall": 60.31
+        },
+        "dustV20_eval": {
+          "mAP@0.5": 22.09,
+          "mAP@0.5:0.95": 11.76,
+          "Precision": 33.59,
+          "Recall": 24.56
+        },
+        "dustV10_eval": {
+          "mAP@0.5": 17.96,
+          "mAP@0.5:0.95": 9.12,
+          "Precision": 29.64,
+          "Recall": 17.34
+        }
+      },
+      "last": {
+        "clean_eval": {
+          "mAP@0.5": 62.52,
+          "mAP@0.5:0.95": 34.38,
+          "Precision": 58.3,
+          "Recall": 59.71
+        },
+        "dustV20_eval": {
+          "mAP@0.5": 22.19,
+          "mAP@0.5:0.95": 11.63,
+          "Precision": 33.33,
+          "Recall": 23.68
+        },
+        "dustV10_eval": {
+          "mAP@0.5": 17.11,
+          "mAP@0.5:0.95": 8.7,
+          "Precision": 35.74,
+          "Recall": 15.68
+        }
+      }
+    },
+    "M_phys": {
+      "best": {
+        "clean_eval": {
+          "mAP@0.5": 42.61,
+          "mAP@0.5:0.95": 22.85,
+          "Precision": 46.04,
+          "Recall": 43.97
+        },
+        "dustV20_eval": {
+          "mAP@0.5": 32.24,
+          "mAP@0.5:0.95": 16.97,
+          "Precision": 44.87,
+          "Recall": 30.58
+        },
+        "dustV10_eval": {
+          "mAP@0.5": 26.85,
+          "mAP@0.5:0.95": 13.08,
+          "Precision": 43.91,
+          "Recall": 23.47
+        }
+      },
+      "last": {
+        "clean_eval": {
+          "mAP@0.5": 47.09,
+          "mAP@0.5:0.95": 24.17,
+          "Precision": 52.39,
+          "Recall": 42.61
+        },
+        "dustV20_eval": {
+          "mAP@0.5": 33.12,
+          "mAP@0.5:0.95": 16.69,
+          "Precision": 50.87,
+          "Recall": 29.2
+        },
+        "dustV10_eval": {
+          "mAP@0.5": 27.93,
+          "mAP@0.5:0.95": 13.45,
+          "Precision": 39.21,
+          "Recall": 27.8
+        }
+      }
+    },
+    "M_noise": {
+      "best": {
+        "clean_eval": {
+          "mAP@0.5": 42.7,
+          "mAP@0.5:0.95": 24.52,
+          "Precision": 49.57,
+          "Recall": 39.35
+        },
+        "dustV20_eval": {
+          "mAP@0.5": 18.76,
+          "mAP@0.5:0.95": 9.06,
+          "Precision": 33.28,
+          "Recall": 21.62
+        },
+        "dustV10_eval": {
+          "mAP@0.5": 18.2,
+          "mAP@0.5:0.95": 8.75,
+          "Precision": 32.97,
+          "Recall": 19.82
+        }
+      },
+      "last": {
+        "clean_eval": {
+          "mAP@0.5": 47.25,
+          "mAP@0.5:0.95": 27.32,
+          "Precision": 61.2,
+          "Recall": 41.09
+        },
+        "dustV20_eval": {
+          "mAP@0.5": 19.91,
+          "mAP@0.5:0.95": 9.77,
+          "Precision": 36.39,
+          "Recall": 20.42
+        },
+        "dustV10_eval": {
+          "mAP@0.5": 17.08,
+          "mAP@0.5:0.95": 8.74,
+          "Precision": 46.0,
+          "Recall": 16.62
+        }
+      }
+    },
+    "M_hsv": {
+      "best": {
+        "clean_eval": {
+          "mAP@0.5": 55.46,
+          "mAP@0.5:0.95": 32.24,
+          "Precision": 58.9,
+          "Recall": 52.92
+        },
+        "dustV20_eval": {
+          "mAP@0.5": 21.65,
+          "mAP@0.5:0.95": 11.24,
+          "Precision": 33.65,
+          "Recall": 23.73
+        },
+        "dustV10_eval": {
+          "mAP@0.5": 16.35,
+          "mAP@0.5:0.95": 8.37,
+          "Precision": 33.95,
+          "Recall": 16.18
+        }
+      },
+      "last": {
+        "clean_eval": {
+          "mAP@0.5": 59.44,
+          "mAP@0.5:0.95": 34.51,
+          "Precision": 63.75,
+          "Recall": 60.2
+        },
+        "dustV20_eval": {
+          "mAP@0.5": 21.96,
+          "mAP@0.5:0.95": 11.02,
+          "Precision": 39.29,
+          "Recall": 22.19
+        },
+        "dustV10_eval": {
+          "mAP@0.5": 17.87,
+          "mAP@0.5:0.95": 8.81,
+          "Precision": 29.85,
+          "Recall": 18.28
+        }
+      }
+    }
+  },
+  "对照表": [
+    {
+      "评测集": "clean_eval",
+      "权重": "best",
+      "M_clean": 61.81,
+      "M_phys": 42.61,
+      "M_noise": 42.7,
+      "M_hsv": 55.46,
+      "Δphys−clean": -19.2,
+      "Δnoise−clean": -19.11,
+      "Δhsv−clean": -6.35
+    },
+    {
+      "评测集": "clean_eval",
+      "权重": "last",
+      "M_clean": 62.52,
+      "M_phys": 47.09,
+      "M_noise": 47.25,
+      "M_hsv": 59.44,
+      "Δphys−clean": -15.43,
+      "Δnoise−clean": -15.27,
+      "Δhsv−clean": -3.08
+    },
+    {
+      "评测集": "dustV20_eval",
+      "权重": "best",
+      "M_clean": 22.09,
+      "M_phys": 32.24,
+      "M_noise": 18.76,
+      "M_hsv": 21.65,
+      "Δphys−clean": 10.15,
+      "Δnoise−clean": -3.33,
+      "Δhsv−clean": -0.44
+    },
+    {
+      "评测集": "dustV20_eval",
+      "权重": "last",
+      "M_clean": 22.19,
+      "M_phys": 33.12,
+      "M_noise": 19.91,
+      "M_hsv": 21.96,
+      "Δphys−clean": 10.93,
+      "Δnoise−clean": -2.28,
+      "Δhsv−clean": -0.23
+    },
+    {
+      "评测集": "dustV10_eval",
+      "权重": "best",
+      "M_clean": 17.96,
+      "M_phys": 26.85,
+      "M_noise": 18.2,
+      "M_hsv": 16.35,
+      "Δphys−clean": 8.89,
+      "Δnoise−clean": 0.24,
+      "Δhsv−clean": -1.61
+    },
+    {
+      "评测集": "dustV10_eval",
+      "权重": "last",
+      "M_clean": 17.11,
+      "M_phys": 27.93,
+      "M_noise": 17.08,
+      "M_hsv": 17.87,
+      "Δphys−clean": 10.82,
+      "Δnoise−clean": -0.03,
+      "Δhsv−clean": 0.76
+    }
+  ],
+  "耗时秒": 0.0
+}

@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Datasets and generated artifacts
+data/*
+!data/README.md
+!data/sample/
+weights/*
+!weights/README.md
+outputs/*
+!outputs/.gitkeep
+
+# Model binaries
+*.pt
+*.pth
+*.onnx
+*.engine
+*.trt
+
+# Runtime
+runs/
+*.log
+*.cache
+
+# OS / editors
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Large archives / office documents (keep the repo code-only)
+*.zip
+*.rar
+*.7z
+*.docx
+*.pptx
+*.xlsx
+
+# Local site preview
+site/.cache/

@@ -1,0 +1,46 @@
+{
+  "device": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "torch": "2.13.0+cu130",
+  "cuda": "13.0",
+  "image": "2015_03663_jpg.rf.7d926d03cbedab890af1165b28e2fdb3.jpg",
+  "batch": 1,
+  "note": "单张推理，含前后处理；未做 TensorRT/ONNX 加速。",
+  "results": [
+    {
+      "mean_ms": 7.78,
+      "median_ms": 7.77,
+      "p95_ms": 8.09,
+      "fps_median": 128.8,
+      "case": "800_M_clean/416",
+      "imgsz": 416,
+      "augment": false
+    },
+    {
+      "mean_ms": 8.55,
+      "median_ms": 8.56,
+      "p95_ms": 9.31,
+      "fps_median": 116.8,
+      "case": "M_clean/640",
+      "imgsz": 640,
+      "augment": false
+    },
+    {
+      "mean_ms": 9.19,
+      "median_ms": 9.17,
+      "p95_ms": 10.2,
+      "fps_median": 109.1,
+      "case": "M_phys/640",
+      "imgsz": 640,
+      "augment": false
+    },
+    {
+      "mean_ms": 20.75,
+      "median_ms": 20.62,
+      "p95_ms": 22.67,
+      "fps_median": 48.5,
+      "case": "M_phys/640+TTA",
+      "imgsz": 640,
+      "augment": true
+    }
+  ]
+}
