@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[full]" pyinstaller
+
+      - name: Build one-folder app
+        env:
+          KMP_DUPLICATE_LIB_OK: "TRUE"
+        run: pyinstaller packaging/mine_loco.spec --noconfirm --clean
+
+      - name: Zip
+        shell: pwsh
+        run: Compress-Archive -Path dist/MineLoco/* -DestinationPath dist/MineLoco-windows-x64.zip -Force
+
+      - name: Split for GitHub 2 GB limit
+        run: python packaging/split_archive.py dist/MineLoco-windows-x64.zip --part-mb 1900
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/MineLoco-windows-x64.zip.*
+            dist/SHA256SUMS.txt
+          generate_release_notes: true

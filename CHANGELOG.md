@@ -12,6 +12,8 @@
   (deployment confidence/F1), `scripts/check_site_links.py`.
 - Docs: model card, data card, technical report, roadmap, FAQ, architecture, deployment.
 - Static project page `site/` with a visibility calculator, demo video, and OG metadata.
+- Desktop packaging: `packaging/mine_loco.spec`, `build_windows.bat`, release workflow,
+  `docs/packaging.md`, `THIRD_PARTY_NOTICES.md`.
 
 ### Changed
 - All experiment scripts now resolve paths through `mine_loco_system.paths`; data/weights/outputs are

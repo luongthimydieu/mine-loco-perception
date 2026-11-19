@@ -6,6 +6,7 @@
 | [results.md](results.md) | Small-scale negative result, scale-up reversal, visibility curve, TTA/soup, latency |
 | [reproduction.md](reproduction.md) | Environment, data, weights, every command, expected numbers, troubleshooting |
 | [deployment.md](deployment.md) | Publishing `site/` to `jinnn.xyz` (subpath/subdomain; Cloudflare/Nginx alternatives) |
+| [packaging.md](packaging.md) | Building the PySide6 desktop app and publishing a Windows zip on GitHub Releases |
 | [faq.md](faq.md) | The questions a reviewer will ask: scale contradiction, physical specificity, clean cost, boundaries |
 | [architecture.md](architecture.md) | Package layout, data flow, six demo pages, script map |
 | [technical-report.md](technical-report.md) | Full technical report: method, protocol, per-class results, boundaries |

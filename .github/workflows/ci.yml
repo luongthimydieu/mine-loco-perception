@@ -27,7 +27,7 @@ jobs:
           pip install numpy Pillow PyYAML pytest ruff
 
       - name: Lint
-        run: ruff check src scripts tests
+        run: ruff check src scripts tests packaging/launcher.py
 
       - name: Compile
         run: python -m compileall -q src scripts tests

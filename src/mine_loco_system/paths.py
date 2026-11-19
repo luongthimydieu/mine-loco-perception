@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Repository path configuration.
+r"""Repository path configuration.
 
 All paths are relative to the repository root and can be overridden with
 environment variables:
@@ -11,15 +11,39 @@ environment variables:
 Expected dataset layout (YOLO format, from the ExDark dataset):
     data/exdark/data/{train,valid}/{images,labels}
     data/exdark800/data/{train,valid}/{images,labels}   # optional 800-image subset
+
+Frozen (PyInstaller) layout:
+    MineLoco.exe
+    weights/yolov8n.pt          # optional, next to the exe
+    data/exdark/data/...        # optional
+    outputs/                    # created under %LOCALAPPDATA%\MineLoco\outputs
+    _internal/assets/...        # bundled sample data and icons
 """
 import os
+import sys
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
-DATA_DIR = Path(os.environ.get("MINE_LOCO_DATA", REPO_ROOT / "data"))
-WEIGHTS_DIR = Path(os.environ.get("MINE_LOCO_WEIGHTS", REPO_ROOT / "weights"))
-OUTPUTS_DIR = Path(os.environ.get("MINE_LOCO_OUTPUTS", REPO_ROOT / "outputs"))
-ASSETS_DIR = REPO_ROOT / "assets"
+# Source checkout: <repo>/src/mine_loco_system/paths.py
+# Frozen bundle:  <dist>/MineLoco/MineLoco.exe  (+ assets in _MEIPASS)
+_FROZEN = bool(getattr(sys, "frozen", False))
+if _FROZEN:
+    APP_DIR = Path(sys.executable).resolve().parent
+    BUNDLE_DIR = Path(getattr(sys, "_MEIPASS", APP_DIR))
+    REPO_ROOT = APP_DIR
+    _default_data = APP_DIR / "data"
+    _default_weights = APP_DIR / "weights"
+    _default_outputs = Path(os.environ.get("LOCALAPPDATA", APP_DIR)) / "MineLoco" / "outputs"
+    ASSETS_DIR = BUNDLE_DIR / "assets"
+else:
+    REPO_ROOT = Path(__file__).resolve().parents[2]
+    _default_data = REPO_ROOT / "data"
+    _default_weights = REPO_ROOT / "weights"
+    _default_outputs = REPO_ROOT / "outputs"
+    ASSETS_DIR = REPO_ROOT / "assets"
+
+DATA_DIR = Path(os.environ.get("MINE_LOCO_DATA", _default_data))
+WEIGHTS_DIR = Path(os.environ.get("MINE_LOCO_WEIGHTS", _default_weights))
+OUTPUTS_DIR = Path(os.environ.get("MINE_LOCO_OUTPUTS", _default_outputs))
 FIGURES_DIR = OUTPUTS_DIR / "figures"
 
 EXDARK_DATA = DATA_DIR / "exdark" / "data"

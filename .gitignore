@@ -20,6 +20,10 @@ weights/*
 outputs/*
 !outputs/.gitkeep
 
+# Build artifacts
+build/
+dist/
+
 # Model binaries
 *.pt
 *.pth

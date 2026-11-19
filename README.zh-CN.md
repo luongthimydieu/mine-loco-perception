@@ -89,6 +89,22 @@ python -m mine_loco_system.main          # 启动演示系统
 权重：将 `yolov8n.pt` 放入 `weights/`；训练权重不随仓库提交，可用
 `scripts/exp_scaleup_ablation.py` 复现四个模型。
 
+### 桌面软件
+
+```bash
+python -m mine_loco_system.main        # 源码运行
+mine-loco                              # pip install -e . 后的命令
+```
+
+Windows 单文件夹版可用 PyInstaller 打包并挂到 GitHub Releases：
+
+```bash
+pyinstaller packaging/mine_loco.spec --noconfirm --clean
+```
+
+详见 [docs/packaging.md](docs/packaging.md)（构建、发布工作流、体积、**AGPL 注意事项**）。
+权重与 ExDark 不打包，放在 `MineLoco.exe` 同目录即可。
+
 ### 复现命令
 
 ```bash
@@ -136,6 +152,8 @@ cd site && python -m http.server 8000
 ## 许可与致谢
 
 - 代码：**MIT**（见 [LICENSE](LICENSE)）。
+- 依赖：Ultralytics YOLOv8 为 **AGPL-3.0**，PySide6 为 LGPL-3.0；发布二进制前请阅读
+  [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 - ExDark 数据集：**CC BY 4.0**，版权归其原作者；使用请引用 ExDark。
 - 粉尘为合成退化，不含真实井下图像。
 - 本仓库只包含代码与小型图件；申报书、个人材料、未公开专利草稿不在其中。

@@ -90,7 +90,8 @@ mine-loco-perception/
 ├─ src/mine_loco_system/     # PySide6 demo package (core physics, fusion, LiDAR, health, UI)
 ├─ scripts/                  # training, evaluation, reproduction, benchmark
 ├─ tests/                    # 18 pytest checks (physics, fusion, LiDAR, health)
-├─ docs/                     # method, results, technical report, model/data cards, deployment
+├─ docs/                     # method, results, technical report, model/data cards, deployment, packaging
+├─ packaging/                # PyInstaller spec, icon, Windows build script
 ├─ assets/                   # figures and small reference JSONs
 ├─ site/                     # static project page (deploy to jinnn.xyz)
 ├─ data/                     # datasets (not committed; see data/README.md)
@@ -120,6 +121,22 @@ python -m mine_loco_system.main
 
 Place `yolov8n.pt` in `weights/` (Ultralytics can download it automatically on first use). Trained
 checkpoints are not committed; `scripts/exp_scaleup_ablation.py` reproduces the four models.
+
+### Desktop app
+
+```bash
+python -m mine_loco_system.main        # source run
+mine-loco                              # console entry after pip install -e .
+```
+
+A Windows one-folder build can be attached to GitHub Releases:
+
+```bash
+pyinstaller packaging/mine_loco.spec --noconfirm --clean
+```
+
+See [docs/packaging.md](docs/packaging.md) (build, release workflow, size, **AGPL caveat**).
+Weights and ExDark are not bundled; place them next to `MineLoco.exe`.
 
 ### Reproduce the paper tables
 
@@ -195,6 +212,8 @@ See [CITATION.cff](CITATION.cff) for the machine-readable record.
 ## License and acknowledgements
 
 - Code: **MIT** (see [LICENSE](LICENSE)).
+- Dependencies: Ultralytics YOLOv8 is **AGPL-3.0**, PySide6 is LGPL-3.0; see
+  [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) before publishing a binary.
 - ExDark dataset: **CC BY 4.0**, © its original authors. Please cite ExDark if you use the data.
 - Dust degradation is synthetic; no real mine images are included.
 - The PySide6 demo and experiment scripts were developed for a student competition; competition

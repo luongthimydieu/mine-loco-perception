@@ -145,10 +145,17 @@ class MainWindow(QMainWindow):
                 time.sleep(0.05)
             QApplication.processEvents()
             name = "%02d_%s.png" % (i, p.ID)
+            path = os.path.join(out, name)
             pm = self.grab()
-            pm.save(os.path.join(out, name))
+            ok = bool(pm.save(path))
+            if not ok:                       # some frozen builds omit the PNG plugin
+                alt = os.path.splitext(path)[0] + ".jpg"
+                ok = bool(pm.save(alt, "JPG", 92))
+                if ok:
+                    name = os.path.basename(alt)
             names.append(name)
-            print("saved", name, flush=True)
+            print(("saved " if ok else "FAILED ") + name +
+                  (" (null pixmap)" if pm.isNull() else ""), flush=True)
         return names
 
     # ------------------------------------------------------------ 演示模式

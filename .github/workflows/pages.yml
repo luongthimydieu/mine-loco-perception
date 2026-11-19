@@ -1,11 +1,9 @@
 name: Deploy project page
 
+# Manual-only by default: the live page is deployed via the personal Pages repo
+# (https://jinnn.xyz/mine-loco/). Enable Pages in Settings → Pages and run this
+# workflow manually if you also want a github.io preview.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'site/**'
-      - '.github/workflows/pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -29,6 +27,10 @@ jobs:
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
+        with:
+          # Requires Pages to be enabled for this repository (Settings → Pages).
+          # enablement: true attempts to enable it automatically when the token allows.
+          enablement: true
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v3

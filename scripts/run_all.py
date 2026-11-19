@@ -56,7 +56,7 @@ def main():
     print("log :", log)
 
     run("unit tests", ["-m", "pytest", "-q", "tests"], log, args.keep_going)
-    run("lint", ["-m", "ruff", "check", "src", "scripts", "tests"], log, args.keep_going)
+    run("lint", ["-m", "ruff", "check", "src", "scripts", "tests", "packaging/launcher.py"], log, args.keep_going)
     run("site links", ["scripts/check_site_links.py"], log, args.keep_going)
     run("pre-flight", ["scripts/check_repro_requirements.py"], log, args.keep_going)
     run("E2 fusion", ["scripts/rerun_e2_offset.py"], log, args.keep_going)

@@ -68,6 +68,21 @@ CNAME  mine-loco   luongthimydieu.github.io
 
 ---
 
+## Troubleshooting: "Deploy project page" fails on GitHub Actions
+
+The `Deploy project page` workflow in **this code repository** is separate from the `jinnn.xyz/mine-loco/`
+deployment (which lives in your personal Pages repo). It fails in ~10–20 s when GitHub Pages is not
+enabled for this repository or its source is not **GitHub Actions**.
+
+The workflow is **manual-only** by default to avoid a red X when Pages is not enabled. If you want a
+preview at `https://<user>.github.io/mine-loco-perception/`:
+
+1. Repo → **Settings → Pages** → **Build and deployment** → Source: **GitHub Actions**.
+2. Actions → **Deploy project page** → **Run workflow**.
+
+If you only need `jinnn.xyz/mine-loco/`, you can ignore or delete the workflow; the live page is
+served from your personal Pages repository.
+
 ## Other hosting options
 
 The rest of this document keeps the generic Cloudflare Pages / VPS / GitHub Pages instructions. They
