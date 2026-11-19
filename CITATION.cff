@@ -20,7 +20,7 @@ authors:
     given-names: Yuhan
   - family-names: Liu
     given-names: Yixuan
-repository-code: "https://github.com/<your-org>/mine-loco-perception"
+repository-code: "https://github.com/luongthimydieu/mine-loco-perception"
 keywords:
   - domain adaptation
   - atmospheric scattering

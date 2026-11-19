@@ -72,7 +72,7 @@ outputs/                生成的案例、训练产物、结果、图件（git �
 ## 快速开始
 
 ```bash
-git clone https://github.com/<your-org>/mine-loco-perception.git
+git clone https://github.com/luongthimydieu/mine-loco-perception.git
 cd mine-loco-perception
 pip install -e ".[full]"
 pytest -q
@@ -124,7 +124,7 @@ cd site && python -m http.server 8000
   author = {Li, Kerui and Wang, Zhiwen and Yang, Moran and Jin, Zikuan and
             Qi, Gaoyang and Xia, Yuhan and Liu, Yixuan},
   year   = {2026},
-  url    = {https://github.com/<your-org>/mine-loco-perception}
+  url    = {https://github.com/luongthimydieu/mine-loco-perception}
 }
 ```
 

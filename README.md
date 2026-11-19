@@ -100,7 +100,7 @@ mine-loco-perception/
 ## Quickstart
 
 ```bash
-git clone https://github.com/<your-org>/mine-loco-perception.git
+git clone https://github.com/luongthimydieu/mine-loco-perception.git
 cd mine-loco-perception
 pip install -e ".[full]"          # Python 3.10+; see requirements.txt for pinned versions
 pytest -q                         # 18 tests, no data needed
@@ -178,7 +178,7 @@ The repository includes a GitHub Pages workflow (`.github/workflows/pages.yml`) 
   author = {Li, Kerui and Wang, Zhiwen and Yang, Moran and Jin, Zikuan and
             Qi, Gaoyang and Xia, Yuhan and Liu, Yixuan},
   year   = {2026},
-  url    = {https://github.com/<your-org>/mine-loco-perception}
+  url    = {https://github.com/luongthimydieu/mine-loco-perception}
 }
 ```
 
